@@ -1,0 +1,27 @@
+{
+    "name": "Komoot GPX Ripper",
+    "version": "1.0",
+    "description": "Rip komoot GPX without paying",
+    "manifest_version": 2,
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "js": ["test.js"],
+            "matches": ["https://www.komoot.de/tour/*"]
+        }
+    ],
+    "permissions": [
+
+    ],
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "browser_action": {
+        "default_icon": "icons/icon32.png"
+    }
+}
