@@ -1,4 +1,9 @@
 window.onload = function () {
+    ripData();
+//    document.getElementById('rip').addEventListener('click', goRip);pop
+}
+
+function ripData(){
     var scripts = document.getElementsByTagName("script");
     var findRe = /(kmtBoot.setProps)/;
     var jsonRe = /kmtBoot.setProps\("(.*)"\)/;
@@ -28,9 +33,18 @@ window.onload = function () {
                 var past = '</trk></gpx>';
                 addToPage(pre + track + past);
                 console.log(pre + track + past);
+                
             }
         }
     }
+    return pre + track + past;
+}
+
+function goRip(){
+    
+    var myTextArea = document.getElementById('gpx');
+    myTextArea.value = ripData();
+    console.log("rip");
 }
 
 function addToPage(gpx) {
