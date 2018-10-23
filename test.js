@@ -1,5 +1,6 @@
 window.onload = function () {
     ripData();
+    
 //    document.getElementById('rip').addEventListener('click', goRip);pop
 }
 
@@ -32,7 +33,7 @@ function ripData(){
                 })
                 var past = '</trk></gpx>';
                 addToPage(pre + track + past);
-                console.log(pre + track + past);
+//                console.log(pre + track + past);
                 
             }
         }
@@ -50,27 +51,34 @@ function goRip(){
 function addToPage(gpx) {
     var aTags = document.getElementsByTagName("li");
     var searchText = "Für GPS-Gerät herunterladen";
-    var found;
+    var found =[];
 
     for (var i = 0; i < aTags.length; i++) {
         if (aTags[i].textContent == searchText) {
-            found = aTags[i];
+            found.push( aTags[i]);
 
-            break;
+//            break;
         }
     }
+//    console.log(found);
 
-    var newListitem = document.createElement("div");
+    var newListitem = document.createElement("li");
     var newTextarea = document.createElement("textarea");
     newTextarea.value = gpx;
 
     newListitem.appendChild(newTextarea);
+    
+    for (var i = 0; i < found.length; i++) {
+//        found[i].parentNode.insertBefore(newListitem, found[i]);
+        found[i].parentNode.appendChild(newListitem);
+    }
+    
+    setTimeout(function(){ 
 
-    found.parentNode.insertBefore(newListitem, found);
+    }, 3000)
 
-    found.parentNode.appendChild(newListitem);
-    var body = document.getElementsByTagName('body');
-    body[0].appendChild(newListitem);
+//    var body = document.getElementsByTagName('body');
+//    body[0].appendChild(newListitem);
 
 
 }
