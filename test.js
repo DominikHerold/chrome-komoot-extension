@@ -47,8 +47,8 @@ function addToPage(gpx) {
     
     for (var i = 0; i < found.length; i++) {
         var newListitem = document.createElement("li");
-    var newTextarea = document.createElement("textarea");
-    newTextarea.value = gpx;
+    var newTextarea = document.createElement("div");
+    newTextarea.innerText = gpx;
 
     newListitem.appendChild(newTextarea);
 		found[i].parentNode.appendChild(newListitem);		
