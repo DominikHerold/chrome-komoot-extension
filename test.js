@@ -36,21 +36,22 @@ function addToPage(gpx) {
     var aTags = document.getElementsByTagName("li");
     var searchText = "Für GPS-Gerät herunterladen";
     var found =[];
-
-    for (var i = 0; i < aTags.length; i++) {
-		if (aTags[i].textContent.indexOf(searchText) > -1) {
-            found.push( aTags[i]);			
+    
+	for (var i = 0; i < aTags.length; i++) {
+		if (aTags[i].textContent.indexOf(searchText) > -1) {            
+			found.push( aTags[i]);			
         }
     }
 
-    var newListitem = document.createElement("li");
+    
+    
+    for (var i = 0; i < found.length; i++) {
+        var newListitem = document.createElement("li");
     var newTextarea = document.createElement("textarea");
     newTextarea.value = gpx;
 
     newListitem.appendChild(newTextarea);
-    
-    for (var i = 0; i < found.length; i++) {
-        found[i].parentNode.appendChild(newListitem);
+		found[i].parentNode.appendChild(newListitem);		
     }
     
     setTimeout(function(){ 
