@@ -20,12 +20,12 @@ function ripData(){
                 var mydata = myjson.match(/"coordinates":{"items":\[(.*?)]/g);
                 var data = "{" + mydata[0]+ "}}";
                 var rJson = JSON.parse(data);
-                var pre = '<gpx><trk>';
+                var pre = '<gpx><trk><trkseg>';
                 var track = '';
                 rJson.coordinates.items.forEach(function (point) {
                     track += '<trkpt lat="' + point.lat + '" lon="' + point.lng + '"><ele>' + point.alt + '</ele></trkpt>';
                 });
-                var past = '</trk></gpx>';
+                var past = '</trkseg></trk></gpx>';
                 addToPage(pre + track + past);
             }
         }
