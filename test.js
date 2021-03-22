@@ -45,13 +45,23 @@ function addToPage(gpx) {
 
     
     
+    var downloaded = false;
     for (var i = 0; i < found.length; i++) {
         var newListitem = document.createElement("li");
-    var newTextarea = document.createElement("div");
+    var newTextarea = document.createElement("div", "content");
     newTextarea.innerText = gpx;
 
     newListitem.appendChild(newTextarea);
-		found[i].parentNode.appendChild(newListitem);		
+		found[i].parentNode.appendChild(newListitem);
+
+    if (!downloaded){
+        downloaded = true;
+        var a = newListitem.appendChild(document.createElement("a"));
+        a.download = "export.gpx";
+        a.href = "data:application/gpx+xml," + gpx;
+        a.click();
+    }
+        
     }
     
     setTimeout(function(){ 
